@@ -1,10 +1,13 @@
 import React from 'react';
 
-const Range = () => {
-  const [value, setValue] = React.useState('50');
+interface IRangeProps {
+  volume: number;
+  setVolume: React.Dispatch<React.SetStateAction<number>>;
+}
 
+const Range: React.FC<IRangeProps> = ({volume, setVolume}) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setVolume(Number(e.target.value));
   };
 
   return (
@@ -13,8 +16,9 @@ const Range = () => {
         className="range__slider"
         type="range"
         min="0"
-        max="100"
-        value={value}
+        max="1"
+        step='0.1'
+        value={volume}
         onChange={handleChange}
       />
     </div>

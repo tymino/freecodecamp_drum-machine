@@ -2,20 +2,29 @@ import React from 'react';
 
 import { Toggle, Display, Range } from '../';
 
-const OptionList = () => {
+interface IOptionList {
+  power: boolean;
+  bank: boolean;
+  handleToggle: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  display: string;
+  volume: number;
+  setVolume: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const OptionList: React.FC<IOptionList> = ({ power, bank, handleToggle, display, volume, setVolume }) => {
   return (
     <div className="option-list">
       <div className="option-list__wrapper">
-        <Toggle />
+        <Toggle name="power" checked={power} handleToggle={handleToggle} />
       </div>
       <div className="option-list__wrapper">
-        <Display />
+        <Display display={display} />
       </div>
       <div className="option-list__wrapper">
-        <Range />
+        <Range volume={volume} setVolume={setVolume} />
       </div>
       <div className="option-list__wrapper">
-        <Toggle />
+        <Toggle name="bank" checked={bank} handleToggle={handleToggle} />
       </div>
     </div>
   );

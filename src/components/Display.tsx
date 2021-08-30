@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Display = () => {
-  return <div className="display">Display</div>;
+interface IDisplayProps {
+  display: string;
+}
+
+const Display: React.FC<IDisplayProps> = ({ display }) => {
+  return <div className="display">{display}</div>;
 };
 
 export default Display;
