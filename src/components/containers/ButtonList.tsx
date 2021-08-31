@@ -2,18 +2,18 @@ import React from 'react';
 
 import { Button } from '../';
 
-import { IDrumData } from '../../types/IDrumData';
+import { IBank } from '../../types/data';
 
 interface IButtonListProps {
-  activeDrum: IDrumData[];
-  handleButtonClick: (note: IDrumData) => void;
+  activeBankArr: IBank[];
+  playAudio: (audio: HTMLAudioElement) => void;
 }
 
-const ButtonList: React.FC<IButtonListProps> = ({ activeDrum, handleButtonClick }) => {
+const ButtonList: React.FC<IButtonListProps> = ({ activeBankArr, playAudio }) => {
   return (
     <div className="button-list">
-      {activeDrum.map((note: IDrumData) => (
-        <Button key={note.id} note={note} handleButtonClick={handleButtonClick} />
+      {activeBankArr.map((bank: IBank) => (
+        <Button key={bank.id} bank={bank} playAudio={playAudio} />
       ))}
     </div>
   );

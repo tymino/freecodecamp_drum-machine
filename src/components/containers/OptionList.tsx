@@ -11,7 +11,7 @@ interface IOptionList {
   setVolume: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const OptionList: React.FC<IOptionList> = ({ power, bank, handleToggle, display, volume, setVolume }) => {
+const OptionList: React.FC<any> = ({ power, bank, handleToggle, display, volume, setVolume }) => {
   return (
     <div className="option-list">
       <div className="option-list__wrapper">

@@ -1,34 +1,37 @@
 import React from 'react';
 
-import { IDrumData } from '../types/IDrumData';
+import useKey from '../hooks/useKey';
+
+import { IBank } from '../types/data';
 
 interface IButtonProps {
-  note: IDrumData;
-  handleButtonClick: (note: IDrumData) => void;
+  bank: IBank;
+  playAudio: (audio: HTMLAudioElement) => void;
 }
 
-const Button: React.FC<IButtonProps> = ({ note, handleButtonClick }) => {
-  const [activeBtn, setActiveBtn] = React.useState<number>(note.keyCode);
+const Button: React.FC<IButtonProps> = ({ bank, playAudio }) => {
+  const [btnAudio, setBtnAudio] = React.useState<HTMLAudioElement>(new Audio(bank.url));
+
+  const btnRef = React.useRef<HTMLButtonElement>(null);
   
 
-  /*
-    Создать аудио в самой кнопке
-    Перерендер идет из-за импорта данных из файла, нужно устанавливать все чеерз useEffect
-  */
+  const handleClick = () => playAudio(btnAudio);
 
-  const handleClick = () => handleButtonClick(note);
-
-  const handleKeyDown = (e: any) => {
-    if (e.keyCode === activeBtn) {
-      handleButtonClick(note);
-      return;
-    }
-    return;
+  const handleKeyPress = () => {
+    btnRef.current?.classList.add('button--active');
+    playAudio(btnAudio);
   };
 
+  const handleKeyDown = () => {
+    btnRef.current?.classList.remove('button--active');
+  };
+
+  useKey('keydown', `Key${bank.keyTrigger}`, handleKeyPress);
+  useKey('keyup', `Key${bank.keyTrigger}`, handleKeyDown);
+
   return (
-    <button className={`button ${activeBtn}`} onClick={handleClick} onKeyDown={handleKeyDown}>
-      {note.keyTrigger}
+    <button className={'button'} ref={btnRef} onClick={handleClick}>
+      {bank.keyTrigger}
     </button>
   );
 };

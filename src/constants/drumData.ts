@@ -1,6 +1,6 @@
-import { IDrumData } from '../types/IDrumData';
+import { IBank } from '../types/data';
 
-const bankOne: IDrumData[] = [
+const bankOne: IBank[] = [
   {
     keyCode: 81,
     keyTrigger: 'Q',
@@ -57,7 +57,7 @@ const bankOne: IDrumData[] = [
   },
 ];
 
-const bankTwo: IDrumData[] = [
+const bankTwo: IBank[] = [
   {
     keyCode: 81,
     keyTrigger: 'Q',
