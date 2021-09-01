@@ -1,62 +1,59 @@
 import React from 'react';
 
-import { IBank, IData } from './types/data';
+import { IData } from './types/data';
 
 import { ButtonList, OptionList } from './components';
 import { bankOne, bankTwo } from './constants/drumData';
 
+
+interface IAudioState {
+  title: string;
+  audio: HTMLAudioElement;
+}
+
 const App = () => {
-  const [dataDrum, setDataDrum] = React.useState<IData[]>([
+  const [dataDrum] = React.useState<IData[]>([
     { title: 'Heater Kit', bank: bankOne },
     { title: 'Smooth Piano Kit', bank: bankTwo },
   ]);
 
-  const [togglePower, setTogglePower] = React.useState<boolean>(true);
-  const [toggleBank, setToggleBank] = React.useState<boolean>(false);
+  const [togglePower, setTogglePower] = React.useState<boolean>(false);
+  const [toggleBank, setToggleBank] = React.useState<boolean>(true);
 
   const [display, setDisplay] = React.useState<string>('');
   const [volume, setVolume] = React.useState<number>(0.1);
 
-  const playAudio = (audio: HTMLAudioElement) => {
+  const playAudio = ({title, audio}: IAudioState) => {
+    if (togglePower) return;
+
+    setDisplay(title);
+
     audio.pause();
     audio.currentTime = 0;
     audio.volume = volume;
     audio.play();
   };
 
-  const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    switch (e.target.name) {
-      case 'power':
-        setTogglePower(e.target.checked);
-        break;
-      case 'bank':
-        setToggleBank(e.target.checked);
-        break;
-      default:
-        return;
-    }
-  };
-
   // React.useEffect(() => {
+  //   setDisplay(String(volume * 100));
   //   const intervalId = setInterval(() => setDisplay(''), 1000);
-
+  
   //   return () => clearInterval(intervalId);
-  // }, [power]);
-
+  // }, [togglePower]);
+  
   return (
     <div className="app">
       <ButtonList
         activeBankArr={!toggleBank ? dataDrum[0].bank : dataDrum[1].bank}
         playAudio={playAudio}
       />
-      {/* <OptionList
-        togglePower={togglePower}
-        toggleBank={toggleBank}
-        handleToggle={handleToggle}
+      <OptionList
+        togglePowerState={[togglePower, setTogglePower]}
+        toggleBankState={[toggleBank, setToggleBank]}
         display={display}
         volume={volume}
         setVolume={setVolume}
-      /> */}
+      />
     </div>
   );
 };

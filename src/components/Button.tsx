@@ -6,20 +6,28 @@ import { IBank } from '../types/data';
 
 interface IButtonProps {
   bank: IBank;
-  playAudio: (audio: HTMLAudioElement) => void;
+  playAudio: (audio: IAudioState) => void;
+}
+
+interface IAudioState {
+  title: string;
+  audio: HTMLAudioElement;
 }
 
 const Button: React.FC<IButtonProps> = ({ bank, playAudio }) => {
-  const [btnAudio, setBtnAudio] = React.useState<HTMLAudioElement>(new Audio(bank.url));
-
   const btnRef = React.useRef<HTMLButtonElement>(null);
-  
+  const [audioState] = React.useState<IAudioState>({
+    title: bank.id,
+    audio: new Audio(bank.url),
+  });
 
-  const handleClick = () => playAudio(btnAudio);
+  const handleClick = () => {
+    playAudio(audioState);
+  };
 
   const handleKeyPress = () => {
     btnRef.current?.classList.add('button--active');
-    playAudio(btnAudio);
+    playAudio(audioState);
   };
 
   const handleKeyDown = () => {

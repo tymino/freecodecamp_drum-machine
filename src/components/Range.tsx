@@ -5,7 +5,7 @@ interface IRangeProps {
   setVolume: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Range: React.FC<IRangeProps> = ({volume, setVolume}) => {
+const Range: React.FC<IRangeProps> = React.memo(({volume, setVolume}) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVolume(Number(e.target.value));
   };
@@ -23,6 +23,6 @@ const Range: React.FC<IRangeProps> = ({volume, setVolume}) => {
       />
     </div>
   );
-};
+});
 
 export default Range;

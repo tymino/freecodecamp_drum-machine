@@ -3,10 +3,14 @@ import React from 'react';
 interface IToggleProps {
   name: string;
   checked: boolean;
-  handleToggle: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Toggle: React.FC<IToggleProps> = ({ name, checked, handleToggle }) => {
+const Toggle: React.FC<IToggleProps> = React.memo(({ name, checked, setToggle }) => {
+  const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setToggle(e.target.checked);
+  };
+
   return (
     <div className='toggle'>
       <p className="toggle__name">{name}</p>
@@ -16,6 +20,6 @@ const Toggle: React.FC<IToggleProps> = ({ name, checked, handleToggle }) => {
       </label>
     </div>
   );
-};
+});
 
 export default Toggle;

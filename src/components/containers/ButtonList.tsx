@@ -4,12 +4,17 @@ import { Button } from '../';
 
 import { IBank } from '../../types/data';
 
-interface IButtonListProps {
-  activeBankArr: IBank[];
-  playAudio: (audio: HTMLAudioElement) => void;
+interface IAudioState {
+  title: string;
+  audio: HTMLAudioElement;
 }
 
-const ButtonList: React.FC<IButtonListProps> = ({ activeBankArr, playAudio }) => {
+interface IButtonListProps {
+  activeBankArr: IBank[];
+  playAudio: (audio: IAudioState) => void;
+}
+
+const ButtonList: React.FC<IButtonListProps> = React.memo(({ activeBankArr, playAudio }) => {
   return (
     <div className="button-list">
       {activeBankArr.map((bank: IBank) => (
@@ -17,6 +22,6 @@ const ButtonList: React.FC<IButtonListProps> = ({ activeBankArr, playAudio }) =>
       ))}
     </div>
   );
-};
+});
 
 export default ButtonList;
