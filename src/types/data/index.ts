@@ -10,4 +10,9 @@ interface IData {
   bank: IBank[];
 }
 
-export type { IBank, IData };
+interface IAudio {
+  title: string;
+  audio: HTMLAudioElement;
+}
+
+export type { IBank, IData, IAudio };

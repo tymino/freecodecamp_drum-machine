@@ -2,21 +2,13 @@ import React from 'react';
 
 import useKey from '../hooks/useKey';
 
-import { IBank } from '../types/data';
+import { IAudio } from '../types/data';
 
-interface IButtonProps {
-  bank: IBank;
-  playAudio: (audio: IAudioState) => void;
-}
-
-interface IAudioState {
-  title: string;
-  audio: HTMLAudioElement;
-}
+import { IButtonProps } from '../types/components';
 
 const Button: React.FC<IButtonProps> = ({ bank, playAudio }) => {
   const btnRef = React.useRef<HTMLButtonElement>(null);
-  const [audioState] = React.useState<IAudioState>({
+  const [audioState] = React.useState<IAudio>({
     title: bank.id,
     audio: new Audio(bank.url),
   });

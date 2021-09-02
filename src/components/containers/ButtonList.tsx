@@ -4,15 +4,7 @@ import { Button } from '../';
 
 import { IBank } from '../../types/data';
 
-interface IAudioState {
-  title: string;
-  audio: HTMLAudioElement;
-}
-
-interface IButtonListProps {
-  activeBankArr: IBank[];
-  playAudio: (audio: IAudioState) => void;
-}
+import { IButtonListProps } from '../../types/components';
 
 const ButtonList: React.FC<IButtonListProps> = React.memo(({ activeBankArr, playAudio }) => {
   return (

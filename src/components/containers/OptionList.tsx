@@ -2,15 +2,9 @@ import React from 'react';
 
 import { Toggle, Display, Range } from '../';
 
-interface IOptionList {
-  togglePowerState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-  toggleBankState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-  display: string;
-  volume: number;
-  setVolume: React.Dispatch<React.SetStateAction<number>>;
-}
+import { IOptionListProps } from '../../types/components';
 
-const OptionList: React.FC<IOptionList> = ({ togglePowerState, toggleBankState, display, volume, setVolume }) => {
+const OptionList: React.FC<IOptionListProps> = ({ togglePowerState, toggleBankState, display, volume, setVolume }) => {
   const [togglePower, setTogglePower] = togglePowerState;
   const [toggleBank, setToggleBank] = toggleBankState;
 

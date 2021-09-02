@@ -1,10 +1,6 @@
 import React from 'react';
 
-interface IToggleProps {
-  name: string;
-  checked: boolean;
-  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { IToggleProps } from '../types/components';
 
 const Toggle: React.FC<IToggleProps> = React.memo(({ name, checked, setToggle }) => {
   const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,10 +8,16 @@ const Toggle: React.FC<IToggleProps> = React.memo(({ name, checked, setToggle })
   };
 
   return (
-    <div className='toggle'>
+    <div className="toggle">
       <p className="toggle__name">{name}</p>
       <label className="toggle__label">
-        <input className="toggle__checkbox" type="checkbox" name={name} checked={checked} onChange={handleToggle} />
+        <input
+          className="toggle__checkbox"
+          type="checkbox"
+          name={name}
+          checked={checked}
+          onChange={handleToggle}
+        />
         <span className="toggle__slider"></span>
       </label>
     </div>

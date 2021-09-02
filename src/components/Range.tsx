@@ -1,11 +1,8 @@
 import React from 'react';
 
-interface IRangeProps {
-  volume: number;
-  setVolume: React.Dispatch<React.SetStateAction<number>>;
-}
+import { IRangeProps } from '../types/components';
 
-const Range: React.FC<IRangeProps> = React.memo(({volume, setVolume}) => {
+const Range: React.FC<IRangeProps> = React.memo(({ volume, setVolume }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVolume(Number(e.target.value));
   };
@@ -17,7 +14,7 @@ const Range: React.FC<IRangeProps> = React.memo(({volume, setVolume}) => {
         type="range"
         min="0"
         max="1"
-        step='0.1'
+        step="0.1"
         value={volume}
         onChange={handleChange}
       />

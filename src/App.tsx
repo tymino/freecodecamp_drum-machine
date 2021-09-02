@@ -1,15 +1,9 @@
 import React from 'react';
 
-import { IData } from './types/data';
+import { IData, IAudio } from './types/data';
 
 import { ButtonList, OptionList } from './components';
-import { bankOne, bankTwo } from './constants/drumData';
-
-
-interface IAudioState {
-  title: string;
-  audio: HTMLAudioElement;
-}
+import { bankOne, bankTwo } from './data';
 
 const App = () => {
   const [dataDrum] = React.useState<IData[]>([
@@ -23,7 +17,7 @@ const App = () => {
   const [display, setDisplay] = React.useState<string>('');
   const [volume, setVolume] = React.useState<number>(0.1);
 
-  const playAudio = ({title, audio}: IAudioState) => {
+  const playAudio = ({ title, audio }: IAudio) => {
     if (togglePower) return;
 
     setDisplay(title);
@@ -37,10 +31,10 @@ const App = () => {
   // React.useEffect(() => {
   //   setDisplay(String(volume * 100));
   //   const intervalId = setInterval(() => setDisplay(''), 1000);
-  
+
   //   return () => clearInterval(intervalId);
   // }, [togglePower]);
-  
+
   return (
     <div className="app">
       <ButtonList

@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface IDisplayProps {
-  display: string;
-}
+import { IDisplayProps } from '../types/components';
 
 const Display: React.FC<IDisplayProps> = React.memo(({ display }) => {
   return <div className="display">{display}</div>;
