@@ -6,7 +6,7 @@ import { IAudio } from '../types/data';
 
 import { IButtonProps } from '../types/components';
 
-const Button: React.FC<IButtonProps> = ({ bank, playAudio }) => {
+const Button: React.FC<IButtonProps> = React.memo(({ bank, playAudio }) => {
   const btnRef = React.useRef<HTMLButtonElement>(null);
   const [audioState] = React.useState<IAudio>({
     title: bank.id,
@@ -34,6 +34,6 @@ const Button: React.FC<IButtonProps> = ({ bank, playAudio }) => {
       {bank.keyTrigger}
     </button>
   );
-};
+});
 
 export default Button;

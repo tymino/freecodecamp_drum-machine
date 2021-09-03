@@ -1,26 +1,28 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+import useTypedSelector from '../../hooks/useTypedSelector';
+
 import { Toggle, Display, Range } from '../';
 
-import { IOptionListProps } from '../../types/components';
+const OptionList: React.FC = () => {
+  const dispatch = useDispatch();
 
-const OptionList: React.FC<IOptionListProps> = ({ togglePowerState, toggleBankState, display, volume, setVolume }) => {
-  const [togglePower, setTogglePower] = togglePowerState;
-  const [toggleBank, setToggleBank] = toggleBankState;
+  const { togglePower, toggleBank, display, volume } = useTypedSelector((state) => state.optionReducer);
 
   return (
     <div className="option-list">
       <div className="option-list__wrapper">
-        <Toggle name="power" checked={togglePower} setToggle={setTogglePower} />
+        <Toggle name="power" checked={togglePower} dispatch={dispatch} />
       </div>
       <div className="option-list__wrapper">
         <Display display={display} />
       </div>
       <div className="option-list__wrapper">
-        <Range volume={volume} setVolume={setVolume} />
+        <Range volume={volume} dispatch={dispatch} />
       </div>
       <div className="option-list__wrapper">
-        <Toggle name="bank" checked={toggleBank} setToggle={setToggleBank} />
+        <Toggle name="bank" checked={toggleBank} dispatch={dispatch} />
       </div>
     </div>
   );

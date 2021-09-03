@@ -1,32 +1,23 @@
-import { IData } from '../../types/data';
+import { dataDrumOne, dataDrumTwo } from '../../data';
 
-interface bankState {
-  bankOne: IData;
-  bankTwo: IData;
-}
+import { IBankState, IDrumsAction } from '../../types/actions/drums';
 
-const initialState: bankState = {
-  bankOne: {
-    title: 'Heater Kit',
-    bank: [],
-  },
-  bankTwo: {
-    title: 'Heater Kit',
-    bank: [],
-  },
+const initialState: IBankState = {
+  bankOne: { title: 'Heater Kit', bank: [] },
+  bankTwo: { title: 'Heater Kit', bank: [] },
 };
 
-const drums = (state = initialState, action: any): bankState => {
+const drumReducer = (state = initialState, action: IDrumsAction): IBankState => {
   switch (action.type) {
     case 'SET_DRUMS':
       return {
         bankOne: {
           ...state.bankOne,
-          bank: action.payload.bankOne,
+          bank: dataDrumOne,
         },
         bankTwo: {
           ...state.bankOne,
-          bank: action.payload.bankTwo,
+          bank: dataDrumTwo,
         },
       };
 
@@ -35,4 +26,4 @@ const drums = (state = initialState, action: any): bankState => {
   }
 };
 
-export { drums };
+export { drumReducer };

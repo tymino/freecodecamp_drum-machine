@@ -1,14 +1,11 @@
 import { combineReducers } from 'redux';
 
-import { drums } from '../reducers/drumReducer';
+import { drumReducer } from '../reducers/drumReducer';
+import { optionReducer } from '../reducers/optionReducer';
 
 export const rootReducer = combineReducers({
-  drums,
+  drumReducer,
+  optionReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
-
-// export {
-//   rootReducer,
-//   // RootState,
-// }

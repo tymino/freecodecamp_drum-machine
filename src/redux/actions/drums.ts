@@ -1,11 +1,8 @@
+import { IDrumsAction } from '../../types/actions/drums';
+import { ActionNameForDrums } from '../../types/enums/index';
 
-
-
-const setDrums = (banks: any) => ({
-  type: 'SET_DRUMS',
-  payload: banks
+const setDrums = (): IDrumsAction => ({
+  type: ActionNameForDrums.SET_DRUMS,
 });
 
-export {
-  setDrums,
-}
+export { setDrums };

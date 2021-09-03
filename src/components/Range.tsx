@@ -1,10 +1,16 @@
 import React from 'react';
+import { Dispatch } from 'redux';
 
-import { IRangeProps } from '../types/components';
+interface IRangeProps {
+  volume: number;
+  dispatch: Dispatch<any>;
+}
 
-const Range: React.FC<IRangeProps> = React.memo(({ volume, setVolume }) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVolume(Number(e.target.value));
+const Range: React.FC<IRangeProps> = React.memo(({ volume, dispatch }) => {
+  const [vol, setVol] = React.useState<number>(volume);
+
+  const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
+    setVol(+value);
   };
 
   return (
@@ -15,8 +21,9 @@ const Range: React.FC<IRangeProps> = React.memo(({ volume, setVolume }) => {
         min="0"
         max="1"
         step="0.1"
-        value={volume}
+        value={vol}
         onChange={handleChange}
+        onMouseUp={() => dispatch({ type: 'SET_VOLUME', payload: vol })}
       />
     </div>
   );

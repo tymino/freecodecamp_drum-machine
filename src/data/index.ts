@@ -1,6 +1,6 @@
 import { IBank } from '../types/data';
 
-const bankOne: IBank[] = [
+const dataDrumOne: IBank[] = [
   {
     keyCode: 81,
     keyTrigger: 'Q',
@@ -57,7 +57,7 @@ const bankOne: IBank[] = [
   },
 ];
 
-const bankTwo: IBank[] = [
+const dataDrumTwo: IBank[] = [
   {
     keyCode: 81,
     keyTrigger: 'Q',
@@ -114,4 +114,4 @@ const bankTwo: IBank[] = [
   },
 ];
 
-export { bankOne, bankTwo };
+export { dataDrumOne, dataDrumTwo };
