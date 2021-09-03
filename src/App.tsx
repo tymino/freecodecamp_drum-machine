@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { setDrums } from './redux/actions/drums';
 
 import { IData, IAudio } from './types/data';
 
@@ -10,6 +13,8 @@ const App = () => {
     { title: 'Heater Kit', bank: bankOne },
     { title: 'Smooth Piano Kit', bank: bankTwo },
   ]);
+
+  const dispatch = useDispatch();
 
   const [togglePower, setTogglePower] = React.useState<boolean>(false);
   const [toggleBank, setToggleBank] = React.useState<boolean>(true);
@@ -27,6 +32,15 @@ const App = () => {
     audio.volume = volume;
     audio.play();
   };
+
+  React.useEffect(() => {
+    const bankObj: any = {
+      bankOne,
+      bankTwo,
+    };
+
+    dispatch(setDrums(bankObj))
+  }, []);
 
   // React.useEffect(() => {
   //   setDisplay(String(volume * 100));

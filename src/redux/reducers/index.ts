@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({});
+import { drums } from '../reducers/drumReducer';
 
-type RootState = ReturnType<typeof rootReducer>;
+export const rootReducer = combineReducers({
+  drums,
+});
 
-export {
-  rootReducer,
-  RootState,
-}
+export type RootState = ReturnType<typeof rootReducer>;
+
+// export {
+//   rootReducer,
+//   // RootState,
+// }
