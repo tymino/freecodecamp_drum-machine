@@ -1,43 +1,28 @@
-import { IBank, IAudio } from '../data';
-
-interface IButtonListProps {
-  activeBankArr: IBank[];
-  playAudio: (audio: IAudio) => void;
-}
+import { IOptionsAction } from '../actions/options';
+import { IBank, IDrumsAction } from '../actions/drums';
 
 interface IButtonProps {
   bank: IBank;
-  playAudio: (audio: IAudio) => void;
-}
-
-interface IOptionListProps {
-  togglePowerState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-  toggleBankState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-  display: string;
+  togglePower: boolean;
   volume: number;
-  setVolume: React.Dispatch<React.SetStateAction<number>>;
+  dispatch: React.Dispatch<IDrumsAction | IOptionsAction>;
 }
 
 interface IToggleProps {
   name: string;
   checked: boolean;
-  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  dispatch: React.Dispatch<IOptionsAction>;
+  action: () => IOptionsAction;
 }
 
 interface IDisplayProps {
   display: string;
+  dispatch: React.Dispatch<IOptionsAction>;
 }
 
 interface IRangeProps {
   volume: number;
-  setVolume: React.Dispatch<React.SetStateAction<number>>;
+  dispatch: React.Dispatch<IOptionsAction>;
 }
 
-export type {
-  IButtonListProps,
-  IButtonProps,
-  IOptionListProps,
-  IToggleProps,
-  IDisplayProps,
-  IRangeProps,
-};
+export type { IButtonProps, IToggleProps, IDisplayProps, IRangeProps };

@@ -1,15 +1,16 @@
 import { dataDrumOne, dataDrumTwo } from '../../data';
 
+import { BankTitle, ActionNameForDrums } from '../../types/enums';
 import { IBankState, IDrumsAction } from '../../types/actions/drums';
 
 const initialState: IBankState = {
-  bankOne: { title: 'Heater Kit', bank: [] },
-  bankTwo: { title: 'Heater Kit', bank: [] },
+  bankOne: { title: BankTitle.BANK_ONE, bank: [] },
+  bankTwo: { title: BankTitle.BANK_TWO, bank: [] },
 };
 
 const drumReducer = (state = initialState, action: IDrumsAction): IBankState => {
   switch (action.type) {
-    case 'SET_DRUMS':
+    case ActionNameForDrums.SET_DRUMS:
       return {
         bankOne: {
           ...state.bankOne,
@@ -20,7 +21,6 @@ const drumReducer = (state = initialState, action: IDrumsAction): IBankState => 
           bank: dataDrumTwo,
         },
       };
-
     default:
       return state;
   }

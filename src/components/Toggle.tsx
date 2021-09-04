@@ -2,9 +2,9 @@ import React from 'react';
 
 import { IToggleProps } from '../types/components';
 
-const Toggle: React.FC<any> = React.memo(({ name, checked, dispatch }) => {
+const Toggle: React.FC<IToggleProps> = React.memo(({ name, checked, dispatch, action }) => {
   const handleToggle = () => {
-    dispatch({type: `TOGGLE_${name.toUpperCase()}`});
+    dispatch(action());
   };
 
   return (

@@ -1,4 +1,4 @@
-import { IBank } from '../types/data';
+import { IBank } from '../types/actions/drums';
 
 const dataDrumOne: IBank[] = [
   {
