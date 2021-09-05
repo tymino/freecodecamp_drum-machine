@@ -41,7 +41,7 @@ const Button: React.FC<IButtonProps> = React.memo(({ bank, togglePower, volume, 
   useKey('keyup', `Key${bank.keyTrigger}`, handleKeyDown);
 
   return (
-    <button className={'button'} ref={btnRef} onClick={handleClick}>
+    <button className="button" ref={btnRef} onClick={handleClick}>
       {bank.keyTrigger}
     </button>
   );
