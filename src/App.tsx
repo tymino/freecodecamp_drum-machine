@@ -4,7 +4,7 @@ import { ButtonList, OptionList } from './components';
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="app" >
       <ButtonList />
       <OptionList />
     </div>

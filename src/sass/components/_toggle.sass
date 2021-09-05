@@ -1,5 +1,7 @@
 $colorCheckBoxBack: #ccc
-$colorCheckBoxActive: #2196F3
+$colorCheckBoxBack: #b9b9b9
+$colorCheckBoxActive: #38a506
+$colorCheckBoxActiveHover: #3cad08
 
 .toggle
   display: flex
@@ -27,9 +29,13 @@ $colorCheckBoxActive: #2196F3
     left: 0
     right: 0
     bottom: 0
+    border-radius: $borderRadius - 6px
     background-color: $colorCheckBoxBack
     -webkit-transition: .4s
     transition: .4s
+
+    &:hover:before
+      background: #eeeeee
 
     &:before
       position: absolute
@@ -38,9 +44,13 @@ $colorCheckBoxActive: #2196F3
       width: 26px
       left: 4px
       bottom: 4px
+      border-radius: $borderRadius - 6px
       background-color: white
       -webkit-transition: .4s
       transition: .4s
+
+      &:hover
+        background: red
 
 .toggle__checkbox:checked + .toggle__slider
   background-color: $colorCheckBoxActive

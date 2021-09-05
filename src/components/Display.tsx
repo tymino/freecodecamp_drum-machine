@@ -28,12 +28,11 @@ const Display: React.FC<IDisplayProps> = ({ display, dispatch }) => {
   }, [isActive, count, dispatch]);
 
   React.useEffect(() => {
-    console.log('Display');
     setIsActive(true);
     setCount(0);
   }, [display]);
 
-  return <div className="display">{display}</div>;
+  return <div id="display" className="display">{display}</div>;
 };
 
 export default Display;

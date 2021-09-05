@@ -15,7 +15,7 @@ const OptionList: React.FC = () => {
   );
 
   return (
-    <div className="option-list">
+    <div id="drum-machine" className="option-list">
       <div className="option-list__wrapper">
         <Toggle name="power" checked={togglePower} dispatch={dispatch} action={setTogglePower} />
       </div>

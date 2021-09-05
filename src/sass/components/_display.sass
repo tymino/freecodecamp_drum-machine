@@ -1,5 +1,7 @@
-$colorBack: gray
-$colorText: white
+@use "sass:math"
+
+$colorBack: #ccc
+$colorText: #000
 
 .display
   display: flex
@@ -8,5 +10,7 @@ $colorText: white
 
   height: 50px
   width: 200px
+  border-radius: $borderRadius - 4px
   background: $colorBack
   color: $colorText
+  font-weight: bold
